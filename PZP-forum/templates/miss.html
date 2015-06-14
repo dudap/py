@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Restart hasła</h2>
+  {% if error %}<p class=error><strong></strong> {{ error }}{% endif %}
+  <form action="{{ url_for('miss') }}" method=post>
+    <dl>
+      <dt>Login:
+      <dd><input type=text name=username required>
+      <dt>Mail:
+      <dd><input type=text name=mail required>
+     
+      <dd><input type=submit value=Wyślij>
+    </dl>
+  </form>
+{% endblock %}

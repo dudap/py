@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.username %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        
+        <dt>Wiadomość:
+
+        <dd><textarea name=text  rows=5 cols=40 maxlength="150" required></textarea>
+	
+	<h3>(max 150 znaków)</h3>
+        <dd><input type=submit value=Dodaj>
+      </dl>
+    </form>
+  {% endif %}
+	
+  <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.autor }}</h2>
+	<h3>{{entry.time}}</h3>
+	{{ entry.text|safe }}
+  {% else %}
+    <li><em>Brak postów</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

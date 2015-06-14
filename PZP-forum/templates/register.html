@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Rejestracja</h2>
+  {% if error %}<p class=error><strong></strong> {{ error }}{% endif %}
+  <form action="{{ url_for('register') }}" method=post>
+    <dl>
+      <dt>Login:
+      <dd><input type=text name=username required>
+      <dt>Hasło:
+      <dd><input type=password name=password required>
+      <h5>(Minimum 8 znaków)</h5>
+	
+      <dt>Powtórz hasło:
+      <dd><input type=password name=password2 required>
+      <dt>Mail:
+      <dd><input type=email name=mail required>
+     
+      <dd><input type=submit value=Zarejestruj>
+    </dl>
+  </form>
+{% endblock %}

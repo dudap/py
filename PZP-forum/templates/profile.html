@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Profil</h2>
+  {% if error %}<p class=error><strong></strong> {{ error }}{% endif %}
+   <h5>
+  <br/>
+    <a href="{{ url_for('check_password') }}">Zmiana hasła<br/></a>
+<br/>
+    <a href="{{ url_for('check_mail') }}">Zmiana maila<br/></a>
+  <br/>
+<br/>
+</h5>
+<h2>Posty:</h2>
+ <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.autor }}</h2>
+	<h3>{{entry.time}}</h3>
+	{{ entry.text|safe }}
+  {% else %}
+    <li><em>Brak postów</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

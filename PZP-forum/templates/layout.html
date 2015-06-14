@@ -1,0 +1,23 @@
+<!doctype html>
+<title>PZP-forum</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Forum
+</h1>
+  <div class=metanav>
+  {% if not session.username %}
+    <a href="{{ url_for('login') }}">Zaloguj<br/></a>
+    <a href="{{ url_for('register') }}">Rejestracja<br/></a>
+        <a href="{{ url_for('show_entries') }}">Forum<br/></a>
+    
+  {% else %}
+    <a href="{{ url_for('logout') }}">Wyloguj<br/></a>
+    <a href="{{ url_for('show_entries') }}">Forum<br/></a>
+    <a href="{{ url_for('profile') }}">Profil<br/></a>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
